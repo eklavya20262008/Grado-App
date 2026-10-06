@@ -19,14 +19,26 @@ onAuthStateChanged(auth, (user) => {
 
 saveBtn.addEventListener("click", async (e) => {
     e.preventDefault()
-    const qp = qpInput.value
-    const cp = cpInput.value
-    const ece = eceInput.value
-    const fee = feeInput.value
-    const maths = mathsInput.value
+    let qp = qpInput.value
+    let cp = cpInput.value
+    let ece = eceInput.value
+    let fee = feeInput.value
+    let maths = mathsInput.value
     message.innerText = "Loading..."
+
+
+    if (
+        !Number.isFinite(qp) || 
+        !Number.isFinite(cp) || 
+        !Number.isFinite(fee) || 
+        !Number.isFinite(ece)|| 
+        !Number.isFinite(maths)) {
+        message.innerText = "Marks must be a number"
+        window.location.href = "dashboard.html"
+        return
+    }
     if (!qp || !cp || !ece || !fee || !maths) {
-        // message.innerText = "please enter all subjects marks"
+        message.innerText = "please enter all subjects marks"
         window.location.href = "dashboard.html"
         return
     }
