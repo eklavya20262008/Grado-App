@@ -25,28 +25,39 @@ saveBtn.addEventListener("click", async (e) => {
     let fee = feeInput.value
     let maths = mathsInput.value
     message.innerText = "Loading..."
-
+    qp = parseFloat(qp)
+    cp = parseFloat(cp)
+    ece = parseFloat(ece)
+    fee = parseFloat(fee)
+    maths = parseFloat(maths)
+    console.log(qp)
 
     if (
-        !Number.isFinite(qp) || 
-        !Number.isFinite(cp) || 
-        !Number.isFinite(fee) || 
-        !Number.isFinite(ece)|| 
+        !Number.isFinite(qp) ||
+        !Number.isFinite(cp) ||
+        !Number.isFinite(fee) ||
+        !Number.isFinite(ece) ||
         !Number.isFinite(maths)) {
         message.innerText = "Marks must be a number"
-        window.location.href = "dashboard.html"
+        setTimeout(() => {
+            window.location.reload()
+        }, 800);
         return
     }
-    if (!qp || !cp || !ece || !fee || !maths) {
+    if ((!qp && qp !== 0)
+        || (cp !== 0 && !cp)
+        || (ece !== 0 && !ece)
+        || (fee !== 0 && !fee)
+        || (maths !== 0 && !maths)) {
         message.innerText = "please enter all subjects marks"
         window.location.href = "dashboard.html"
         return
     }
     if (qp > 20 || cp > 20 || ece > 20 || fee > 20 || maths > 20) {
         message.innerText = "Marks should be less then or equal to 20"
-        setTimeout(()=>[
+        setTimeout(() => [
             window.location.href = "marks.html"
-        ],1000)
+        ], 1000)
         return
 
     }

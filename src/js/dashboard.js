@@ -112,16 +112,14 @@ onAuthStateChanged(auth, async (user) => {
         })
         window.location.href = "login.html"
     })
-    
-
 })
-addSubBtn.addEventListener("click", () => {
+addSubBtn.addEventListener("click", async () => {
     console.log(1)
-    window.location.href = "marks.html"
-    logEvent(analytics, 'button_click', {
+    await logEvent(analytics, 'button_click', {
         button_name: 'marks_change_button',
         page_location: window.location.href
     })
+    window.location.href = "marks.html"
 })
 
 
