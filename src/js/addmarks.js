@@ -59,4 +59,8 @@ saveBtn.addEventListener("click", async (e) => {
         window.location.href = "dashboard.html"
 
     })
+    logEvent(analytics, 'button_click', {
+        button_name: 'marks_add_button',
+        page_location: window.location.href
+    })
 })
